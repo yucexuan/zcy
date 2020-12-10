@@ -1,46 +1,45 @@
 package com.ycx.mybatis.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class Student {
-    private String sId;
+    private Integer id;
 
-    private String sName;
+    private String name;
 
-    private String sBirth;
-
-    private String sSex;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    private Date birthday;
 
     private Integer classId;
 
-    public String getsId() {
-        return sId;
+    private Integer sex;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setsId(String sId) {
-        this.sId = sId == null ? null : sId.trim();
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getsName() {
-        return sName;
+    public String getName() {
+        return name;
     }
 
-    public void setsName(String sName) {
-        this.sName = sName == null ? null : sName.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public String getsBirth() {
-        return sBirth;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setsBirth(String sBirth) {
-        this.sBirth = sBirth == null ? null : sBirth.trim();
-    }
-
-    public String getsSex() {
-        return sSex;
-    }
-
-    public void setsSex(String sSex) {
-        this.sSex = sSex == null ? null : sSex.trim();
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public Integer getClassId() {
@@ -49,5 +48,13 @@ public class Student {
 
     public void setClassId(Integer classId) {
         this.classId = classId;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 }

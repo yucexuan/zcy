@@ -2,6 +2,8 @@ package com.ycx.mybatis.mapper;
 
 import com.ycx.mybatis.dto.ClassDto;
 import com.ycx.mybatis.model.Class;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface ClassMapper {
@@ -14,6 +16,8 @@ public interface ClassMapper {
     List<Class> selectAll();
 
     int updateByPrimaryKey(Class record);
+
+
 
     ClassDto getClassAndStudent(Integer id);
 }

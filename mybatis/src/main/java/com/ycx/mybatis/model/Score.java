@@ -1,33 +1,43 @@
 package com.ycx.mybatis.model;
 
 public class Score {
-    private String sId;
+    private Integer id;
 
-    private String cId;
+    private Integer courseId;
 
-    private Integer sScore;
+    private Integer score;
 
-    public String getsId() {
-        return sId;
+    private Integer studentId;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setsId(String sId) {
-        this.sId = sId == null ? null : sId.trim();
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getcId() {
-        return cId;
+    public Integer getCourseId() {
+        return courseId;
     }
 
-    public void setcId(String cId) {
-        this.cId = cId == null ? null : cId.trim();
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
     }
 
-    public Integer getsScore() {
-        return sScore;
+    public Integer getScore() {
+        return score;
     }
 
-    public void setsScore(Integer sScore) {
-        this.sScore = sScore;
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 }

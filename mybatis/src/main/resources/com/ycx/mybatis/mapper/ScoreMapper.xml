@@ -2,35 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ycx.mybatis.mapper.ScoreMapper">
   <resultMap id="BaseResultMap" type="com.ycx.mybatis.model.Score">
-    <id column="s_id" jdbcType="VARCHAR" property="sId" />
-    <id column="c_id" jdbcType="VARCHAR" property="cId" />
-    <result column="s_score" jdbcType="INTEGER" property="sScore" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="course_id" jdbcType="INTEGER" property="courseId" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="student_id" jdbcType="INTEGER" property="studentId" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="map">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from score
-    where s_id = #{sId,jdbcType=VARCHAR}
-      and c_id = #{cId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.ycx.mybatis.model.Score">
-    insert into score (s_id, c_id, s_score
-      )
-    values (#{sId,jdbcType=VARCHAR}, #{cId,jdbcType=VARCHAR}, #{sScore,jdbcType=INTEGER}
-      )
+    insert into score (id, course_id, score, 
+      student_id)
+    values (#{id,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, 
+      #{studentId,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.ycx.mybatis.model.Score">
     update score
-    set s_score = #{sScore,jdbcType=INTEGER}
-    where s_id = #{sId,jdbcType=VARCHAR}
-      and c_id = #{cId,jdbcType=VARCHAR}
+    set course_id = #{courseId,jdbcType=INTEGER},
+      score = #{score,jdbcType=INTEGER},
+      student_id = #{studentId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
-    select s_id, c_id, s_score
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, course_id, score, student_id
     from score
-    where s_id = #{sId,jdbcType=VARCHAR}
-      and c_id = #{cId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select s_id, c_id, s_score
+    select id, course_id, score, student_id
     from score
   </select>
 </mapper>

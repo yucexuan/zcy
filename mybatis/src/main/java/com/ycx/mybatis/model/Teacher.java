@@ -1,16 +1,16 @@
 package com.ycx.mybatis.model;
 
 public class Teacher {
-    private String tId;
+    private Integer tId;
 
     private String tName;
 
-    public String gettId() {
+    public Integer gettId() {
         return tId;
     }
 
-    public void settId(String tId) {
-        this.tId = tId == null ? null : tId.trim();
+    public void settId(Integer tId) {
+        this.tId = tId;
     }
 
     public String gettName() {

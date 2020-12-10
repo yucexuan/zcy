@@ -25,7 +25,13 @@ public class StudentService {
         PageDto<Student> pageDto = new PageDto<>();
         pageDto.setData(byPage);
         pageDto.setTotal(count);
-        pageDto.setTotalPage((count+pageSize-1)/pageSize);
+        pageDto.setTotalPage((count + pageSize - 1) / pageSize);
         return pageDto;
     }
+
+    public Integer saveAndGetKey(Student student) {
+        studentMapper.insert(student);
+        return student.getId();
+    }
 }
+

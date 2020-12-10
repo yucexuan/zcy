@@ -4,11 +4,11 @@ import com.ycx.mybatis.model.Course;
 import java.util.List;
 
 public interface CourseMapper {
-    int deleteByPrimaryKey(String cId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Course record);
 
-    Course selectByPrimaryKey(String cId);
+    Course selectByPrimaryKey(Integer id);
 
     List<Course> selectAll();
 

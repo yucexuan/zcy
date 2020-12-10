@@ -2,45 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ycx.mybatis.mapper.StudentMapper">
   <resultMap id="BaseResultMap" type="com.ycx.mybatis.model.Student">
-    <id column="s_id" jdbcType="VARCHAR" property="sId" />
-    <result column="s_name" jdbcType="VARCHAR" property="sName" />
-    <result column="s_birth" jdbcType="VARCHAR" property="sBirth" />
-    <result column="s_sex" jdbcType="VARCHAR" property="sSex" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
     <result column="class_id" jdbcType="INTEGER" property="classId" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from student
-    where s_id = #{sId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.ycx.mybatis.model.Student">
-    insert into student (s_id, s_name, s_birth, 
-      s_sex, class_id)
-    values (#{sId,jdbcType=VARCHAR}, #{sName,jdbcType=VARCHAR}, #{sBirth,jdbcType=VARCHAR}, 
-      #{sSex,jdbcType=VARCHAR}, #{classId,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.ycx.mybatis.model.Student"
+          useGeneratedKeys="true" keyProperty="id">
+    insert into student (name, birthday,
+      class_id, sex)
+    values ( #{name,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP},
+      #{classId,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.ycx.mybatis.model.Student">
     update student
-    set s_name = #{sName,jdbcType=VARCHAR},
-      s_birth = #{sBirth,jdbcType=VARCHAR},
-      s_sex = #{sSex,jdbcType=VARCHAR},
-      class_id = #{classId,jdbcType=INTEGER}
-    where s_id = #{sId,jdbcType=VARCHAR}
+    set name = #{name,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      class_id = #{classId,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select s_id, s_name, s_birth, s_sex, class_id
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, birthday, class_id, sex
     from student
-    where s_id = #{sId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select s_id, s_name, s_birth, s_sex, class_id
+    select id, name, birthday, class_id, sex
     from student
   </select>
-
   <select id="getByPage" resultMap="BaseResultMap">
-      SELECT * FROM student WHERE 1=1
-        <if test="name != null">
-          AND s_name LIKE "%"#{name}"%"
-        </if>
+    SELECT * FROM student WHERE 1=1
+    <if test="name != null">
+      AND s_name LIKE "%"#{name}"%"
+    </if>
     LIMIT #{pageNum},#{pageSize};
 
   </select>

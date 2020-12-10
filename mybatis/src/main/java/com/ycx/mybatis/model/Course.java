@@ -1,33 +1,33 @@
 package com.ycx.mybatis.model;
 
 public class Course {
-    private String cId;
+    private Integer id;
 
-    private String cName;
+    private String courseName;
 
-    private String tId;
+    private Integer teacherId;
 
-    public String getcId() {
-        return cId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setcId(String cId) {
-        this.cId = cId == null ? null : cId.trim();
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getcName() {
-        return cName;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setcName(String cName) {
-        this.cName = cName == null ? null : cName.trim();
+    public void setCourseName(String courseName) {
+        this.courseName = courseName == null ? null : courseName.trim();
     }
 
-    public String gettId() {
-        return tId;
+    public Integer getTeacherId() {
+        return teacherId;
     }
 
-    public void settId(String tId) {
-        this.tId = tId == null ? null : tId.trim();
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
     }
 }

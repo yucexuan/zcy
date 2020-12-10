@@ -1,60 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ycx.mybatis.mapper.ClassMapper">
-    <resultMap id="BaseResultMap" type="com.ycx.mybatis.model.Class">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="class_name" jdbcType="VARCHAR" property="className"/>
-        <result column="teacher_id" jdbcType="INTEGER" property="teacherId"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        DELETE FROM class
-        WHERE id = #{id,jdbcType=INTEGER}
-    </delete>
-    <insert id="insert" parameterType="com.ycx.mybatis.model.Class">
-        INSERT INTO class (id, class_name, teacher_id
-        )
-        VALUES (#{id,jdbcType=INTEGER}, #{className,jdbcType=VARCHAR}, #{teacherId,jdbcType=INTEGER}
-        )
-    </insert>
-    <update id="updateByPrimaryKey" parameterType="com.ycx.mybatis.model.Class">
-        UPDATE class
-        SET class_name = #{className,jdbcType=VARCHAR},
-            teacher_id = #{teacherId,jdbcType=INTEGER}
-        WHERE id = #{id,jdbcType=INTEGER}
-    </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        SELECT
-            id,
-            class_name,
-            teacher_id
-        FROM class
-        WHERE id = #{id,jdbcType=INTEGER}
-    </select>
-    <select id="selectAll" resultMap="BaseResultMap">
-        SELECT
-            id,
-            class_name,
-            teacher_id
-        FROM class
-    </select>
-    <resultMap id="classAndStudent" type="com.ycx.mybatis.dto.ClassDto">
-        <id column="id" property="id"/>
-        <result column="class_name" property="className"/>
-        <result column="teacher_id" property="teacherId"/>
-        <collection property="students" ofType="com.ycx.mybatis.model.Student">
-            <id column="s_id" property="sId"/>
-            <result column="s_name" property="sName"/>
-            <result column="s_birth" property="sBirth"/>
-            <result column="s_sex" property="sSex"/>
-            <result column="class_id" property="classId"/>
-        </collection>
-    </resultMap>
+  <resultMap id="BaseResultMap" type="com.ycx.mybatis.model.Class">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="class_name" jdbcType="VARCHAR" property="className" />
+    <result column="teacher_id" jdbcType="INTEGER" property="teacherId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from class
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ycx.mybatis.model.Class">
+    insert into class (id, class_name, teacher_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{className,jdbcType=VARCHAR}, #{teacherId,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ycx.mybatis.model.Class">
+    update class
+    set class_name = #{className,jdbcType=VARCHAR},
+      teacher_id = #{teacherId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, class_name, teacher_id
+    from class
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, class_name, teacher_id
+    from class
+  </select>
+  <resultMap id="classAndStudent" type="com.ycx.mybatis.dto.ClassDto">
+    <id column="id" property="id"/>
+    <result column="class_name" property="className"/>
+    <result column="teacher_id" property="teacherId"/>
+    <collection property="students" ofType="com.ycx.mybatis.model.Student">
+      <id column="id" property="id"/>
+      <result column="name" property="name"/>
+      <result column="birthday" property="birthday"/>
+      <result column="sex" property="sex"/>
+      <result column="class_id" property="classId"/>
+    </collection>
+  </resultMap>
 
-    <select id="getClassAndStudent" resultMap="classAndStudent">
-        SELECT
-            a.*,
-            b.*
-        FROM class AS a, student AS b
-        WHERE a.id = #{id} AND b.class_id = #{id}
-    </select>
+  <select id="getClassAndStudent" resultMap="classAndStudent">
+    SELECT
+    a.*,
+    b.*
+    FROM class AS a, student AS b
+    WHERE a.id = #{id} AND b.class_id = #{id}
+  </select>
 </mapper>

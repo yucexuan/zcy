@@ -19,7 +19,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/excercise"
                         userId="root"
-                        password="root">
+                        password="123456">
         </jdbcConnection>
         <!-- javaBean的生成策略-->
         <javaModelGenerator targetPackage="com.ycx.mybatis.model" targetProject="src/main/java">
@@ -36,11 +36,11 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- 逆向分析的表 -->
-        <table tableName="course" domainObjectName="Course"></table>
+        <!--<table tableName="course" domainObjectName="Course"></table>-->
         <table tableName="score" domainObjectName="Score"></table>
-        <table tableName="student" domainObjectName="Student"/>
-        <table tableName="teacher" domainObjectName="Teacher"/>
-        <table tableName="class" domainObjectName="Class"/>
+        <!--<table tableName="student" domainObjectName="Student"/>-->
+        <!--<table tableName="teacher" domainObjectName="Teacher"/>-->
+        <!--<table tableName="class" domainObjectName="Class"/>-->
     </context>
 </generatorConfiguration>
 
