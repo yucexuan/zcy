@@ -1,23 +1,23 @@
 package com.ycx.mybatis.model;
 
 public class Teacher {
-    private Integer tId;
+    private Integer id;
 
-    private String tName;
+    private String teacherName;
 
-    public Integer gettId() {
-        return tId;
+    public Integer getId() {
+        return id;
     }
 
-    public void settId(Integer tId) {
-        this.tId = tId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String gettName() {
-        return tName;
+    public String getTeacherName() {
+        return teacherName;
     }
 
-    public void settName(String tName) {
-        this.tName = tName == null ? null : tName.trim();
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName == null ? null : teacherName.trim();
     }
 }

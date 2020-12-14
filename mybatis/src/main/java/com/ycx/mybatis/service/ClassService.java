@@ -1,10 +1,16 @@
 package com.ycx.mybatis.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ycx.mybatis.dto.ClassDto;
 import com.ycx.mybatis.mapper.ClassMapper;
 import com.ycx.mybatis.mapper.StudentMapper;
+import com.ycx.mybatis.model.Class;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author yucexuan <yu.cexuan@chinaott.net>
@@ -22,4 +28,10 @@ public class ClassService {
        return classMapper.getClassAndStudent(id);
     }
 
+    //@Transactional(rollbackFor = {Throwable.class})
+    public PageInfo<Class> getAll(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize,true);
+        List<Class> classes = classMapper.selectAll();
+        return new PageInfo<>(classes);
+    }
 }

@@ -1,6 +1,9 @@
 package com.ycx.mybatis.model;
 
-public class Class {
+import java.io.Serializable;
+
+public class Class implements Serializable{
+
     private Integer id;
 
     private String className;

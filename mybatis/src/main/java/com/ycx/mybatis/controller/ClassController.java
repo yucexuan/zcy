@@ -1,12 +1,12 @@
 package com.ycx.mybatis.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.ycx.mybatis.dto.ClassDto;
+import com.ycx.mybatis.dto.RestModel;
+import com.ycx.mybatis.model.Class;
 import com.ycx.mybatis.service.ClassService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.PortUnreachableException;
 
@@ -16,6 +16,7 @@ import java.net.PortUnreachableException;
  * @description
  **/
 @RestController
+@RequestMapping("/class")
 public class ClassController {
     @Autowired
     private ClassService classService;
@@ -23,5 +24,12 @@ public class ClassController {
     @GetMapping
     public ClassDto getClass(@RequestParam(value = "id") Integer id){
         return classService.getClassAndStudent(id);
+    }
+
+    @GetMapping("/getByPage")
+    public RestModel getByPage(@RequestParam(defaultValue = "1",required = false) Integer pageNum,
+                               @RequestParam(defaultValue = "1",required = false) Integer pageSize){
+       PageInfo<Class> pageInfo = classService.getAll(pageNum,pageSize);
+       return new RestModel(pageInfo);
     }
 }

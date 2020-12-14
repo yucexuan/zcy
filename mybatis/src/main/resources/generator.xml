@@ -37,9 +37,9 @@
         </javaClientGenerator>
         <!-- 逆向分析的表 -->
         <!--<table tableName="course" domainObjectName="Course"></table>-->
-        <table tableName="score" domainObjectName="Score"></table>
+        <!--<table tableName="score" domainObjectName="Score"></table>-->
         <!--<table tableName="student" domainObjectName="Student"/>-->
-        <!--<table tableName="teacher" domainObjectName="Teacher"/>-->
+        <table tableName="teacher" domainObjectName="Teacher"/>
         <!--<table tableName="class" domainObjectName="Class"/>-->
     </context>
 </generatorConfiguration>
