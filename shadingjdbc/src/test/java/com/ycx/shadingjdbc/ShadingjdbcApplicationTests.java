@@ -63,5 +63,6 @@ class ShadingjdbcApplicationTests {
     public void str(){
         String s1 = "123421";
         String s2 = s1.substring(0,2), s3 = s1.substring(2);
+        System.out.println("jdfklfjakl;fja");
     }
 }
