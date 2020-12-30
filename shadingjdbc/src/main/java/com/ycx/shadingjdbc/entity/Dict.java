@@ -4,13 +4,12 @@ import lombok.Data;
 
 /**
  * @author yucexuan <yu.cexuan@chinaott.net>
- * @date 2020/12/23 10:49
+ * @date 2020/12/28 13:21
  * @description
  **/
 @Data
-public class Course {
-    private Long id;
-    private String name;
+public class Dict {
+    private Long dictId;
     private String status;
-    private Long userId;
+    private String value;
 }
