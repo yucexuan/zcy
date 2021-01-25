@@ -11,7 +11,7 @@ import java.util.List;
  * @description
  **/
 @Data
-public class ClassDto {
+public class ClassDto extends Parent{
     private Integer id;
     private String className;
     private Integer teacherId;
