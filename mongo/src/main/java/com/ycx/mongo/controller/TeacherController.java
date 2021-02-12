@@ -45,9 +45,10 @@ public class TeacherController {
     }
 
     @DeleteMapping
-    public void delete(@RequestParam String name){
+    public void delete(@RequestParam String name) throws IllegalAccessException, InstantiationException {
         Query query = new Query(Criteria.where("name").is(name));
         template.remove(query,Teacher.class);
+        Teacher teacher = Teacher.class.newInstance();
     }
 }
 
